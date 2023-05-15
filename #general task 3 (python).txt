@@ -1,0 +1,7 @@
+#general task 3 (python)
+def check_odd_digits(n):
+    return all(int(digit) % 2 == 0 for digit in str(n))
+
+# Test the function
+print(check_odd_digits(2))
+print(check_odd_digits(134))

@@ -1,0 +1,7 @@
+#general task 4 (python)
+
+def sum_pattern(x):
+    return sum(int(str(x) * i) for i in range(1, 5))
+
+# Test the function
+print(sum_pattern(3))  # Output: 3702

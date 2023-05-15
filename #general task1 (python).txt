@@ -1,0 +1,37 @@
+#general task1 (python)
+import itertools
+
+def fibonacci():
+    a, b = 1, 1
+    while True:  
+        yield a
+        a, b = b, a + b
+
+def even_fibonacci_sum(n):
+    even_fib = (x for x in fibonacci() if x % 2 == 0)
+    return sum(itertools.islice(even_fib, n))
+
+# Test the function
+print(even_fibonacci_sum(100))
+
+
+def even_fibonacci_sum(n):
+    # Nested generator for Fibonacci numbers
+    def fibonacci():
+        a, b = 1, 1
+        while True:  # Keep generating forever
+            yield a
+            a, b = b, a + b
+
+    even_fib = (x for x in fibonacci() if x % 2 == 0)
+    first_n_even_fibs = list(itertools.islice(even_fib, n))
+
+    # Print the first n even Fibonacci numbers
+    for fib in first_n_even_fibs:
+        print(fib)
+
+    # Return their sum
+    return sum(first_n_even_fibs)
+
+# Test the function
+print('Sum:', even_fibonacci_sum(100))

@@ -1,0 +1,117 @@
+Java task 1
+DoublyLinkedList.java 
+
+
+public class DoublyLinkedList {
+    private Node head;
+    private Node tail;
+
+    private class Node {
+        int data;
+        Node prev;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    public void addFirst(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            head.prev = newNode;
+            newNode.next = head;
+            head = newNode;
+        }
+    }
+
+    public void addLast(int data) {
+        Node newNode = new Node(data);
+        if (tail == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+    }
+
+    public void removeFirst() {
+        if (head != null) {
+            remove(head);
+        }
+    }
+
+    public void removeLast() {
+        if (tail != null) {
+            remove(tail);
+        }
+    }
+
+    private void remove(Node node) {
+        if (node.prev != null) {
+            node.prev.next = node.next;
+        } else {
+            head = node.next;
+        }
+
+        if (node.next != null) {
+            node.next.prev = node.prev;
+        } else {
+            tail = node.prev;
+        }
+    }
+
+    public Integer getFirst() {
+        return (head != null) ? head.data : null;
+    }
+
+    public Integer getLast() {
+        return (tail != null) ? tail.data : null;
+    }
+}
+
+Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        // Add elements
+        list.addFirst(5);
+        list.addLast(6);
+        list.addLast(3);
+        list.addLast(4);
+
+        // Print first and last elements
+        System.out.println("First: " + list.getFirst());  // Output: 1
+        System.out.println("Last: " + list.getLast());    // Output: 4
+
+        // Remove the first node
+        list.removeFirst();
+
+        // Print first and last elements again
+        System.out.println("First after removal: " + list.getFirst());  // Output: 2
+        System.out.println("Last after removal: " + list.getLast());    // Output: 4
+    }
+}
+
+
+remarks
+
+addFirst(int data): This function has a time complexity of O(1) because it only involves a constant number of operations (creating a new node and changing a few pointers).
+
+addLast(int data): Similar to addFirst, this function also has a time complexity of O(1) for the same reason.
+
+removeFirst(): This function also has a time complexity of O(1) because it only involves removing the first node (which is directly accessible via head) and adjusting the pointers.
+
+removeLast(): This function also has a time complexity of O(1) because it only involves removing the last node (which is directly accessible via tail) and adjusting the pointers.
+
+remove(Node node): This function also has a time complexity of O(1) because it only involves adjusting a few pointers. Note that this function assumes that you already have a reference to the node you want to remove.
+
+getFirst(): This function has a time complexity of O(1) because it only involves returning the data of the head node (if it exists).
+
+getLast(): This function has a time complexity of O(1) because it only involves returning the data of the tail node (if it exists).
+

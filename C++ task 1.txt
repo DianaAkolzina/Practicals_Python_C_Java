@@ -1,0 +1,33 @@
+// C++ task 1 
+
+#include <iostream>
+
+class MyClass {
+private:
+    static int count;
+
+public:
+    MyClass() { ++count; }  // Constructor increments count
+    ~MyClass() { --count; } // Destructor decrements count
+
+    static int nobjs() { return count; } // Static function to get count
+};
+
+// Initialize static member
+int MyClass::count = 0;
+
+//Checking for functionality 
+int main() {
+    MyClass myObj1; 
+    std::cout << MyClass::nobjs() << std::endl; // output: 1
+
+    {
+        MyClass myObj2;
+        MyClass myObj3;
+        std::cout << MyClass::nobjs() << std::endl; // output: 3
+    } // myObj2 and myObj3 are destructed here
+
+    std::cout << MyClass::nobjs() << std::endl; // output: 1
+}
+
+/*The main assumption made here is that all objects of MyClass are created and destroyed in a controlled manner, and that the constructor and destructor of MyClass are the only places where count is modified. If objects were created or destroyed in other ways (e.g., through raw memory manipulation), the count could become incorrect.*/

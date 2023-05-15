@@ -1,0 +1,8 @@
+#python task 2
+def generate_lists(n):
+    return [[i+1 for i in range(j+1)] for j in range(n)]
+
+print(generate_lists(0))  
+print(generate_lists(1))  
+print(generate_lists(2))  
+print(generate_lists(3))  
