@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{listings}
+
+\begin{document}
+
+\title{Main Principles of OOP in Java and C++}
+\author{Diana Akolzina}
+\maketitle
+
+\section{Introduction}
+Object-Oriented Programming (OOP) is a programming paradigm that uses "objects" to design applications and software. There are four main principles of OOP: encapsulation, inheritance, polymorphism, and abstraction.
+
+\section{Encapsulation}
+Encapsulation is defined as the wrapping up of data under a single unit. It is the mechanism that binds together code and the data it manipulates.
+
+\subsection{Java}
+\begin{lstlisting}[language=Java]
+public class Encapsulation {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+\end{lstlisting}
+
+\subsection{C++}
+\begin{lstlisting}[language=C++]
+class Encapsulation {
+    private:
+        std::string name;
+
+    public:
+        void setName(std::string name) {
+            this->name = name;
+        }
+
+        std::string getName() {
+            return name;
+        }
+};
+\end{lstlisting}
+
+\section{Inheritance}
+Inheritance is a process of object reusability. It is a mechanism where a new class is derived from an existing class.
+
+\subsection{Java}
+\begin{lstlisting}[language=Java]
+public class Base {
+}
+
+public class Derived extends Base {
+}
+\end{lstlisting}
+
+\subsection{C++}
+\begin{lstlisting}[language=C++]
+class Base {
+};
+
+class Derived: public Base {
+};
+\end{lstlisting}
+
+\section{Polymorphism}
+Polymorphism allows us to perform a single action in different ways. It provides an ability to a class to have multiple implementations with the same name.
+
+\subsection{Java}
+\begin{lstlisting}[language=Java]
+public class Animal {
+    public void sound() {
+    }
+}
+
+public class Dog extends Animal {
+    public void sound() {
+        System.out.println("Bark");
+    }
+}
+\end{lstlisting}
+
+\subsection{C++}
+\begin{lstlisting}[language=C++]
+class Animal {
+    public:
+        virtual void sound() {
+        }
+};
+
+class Dog: public Animal {
+    public:
+        void sound() {
+            std::cout << "Bark";
+        }
+};
+\end{lstlisting}
+
+\section{Abstraction}
+Abstraction is a process where you show only "relevant" data and "hide" unnecessary details of an object from the user.
+
+\subsection{Java}
+\begin{lstlisting}[language=Java]
+public abstract class Animal {
+    public abstract void sound();
+}
+\end{lstlisting}
+
+\subsection{C++}
+\begin{lstlisting}[language=C++]
+class Animal {
+    public:
+        virtual void sound() = 0;  // Pure virtual function
+};
+\end{lstlisting}
+
+\end{document}
